@@ -5,6 +5,8 @@ CIT 215
 Prof. Kane
 */
 
+let resultsarea = document.querySelector(".resultsbox")
+
 let eternals = [
     {
         name: "Sersi",
@@ -43,7 +45,7 @@ let eternals = [
             "Combat Expert",
             "Science Expert",
             "Expert Marksman",
-            "Multinlingual"
+            "Multilingual"
         ]
     },
     {
@@ -58,30 +60,28 @@ let eternals = [
 ]
 
 function createCard(Hero) {
-    let resultsarea = document.querySelector(".resultsbox")
     resultsarea.innerHTML+= `<div classname = 'card'> <h3> ${Hero.name}</h3> <p>${Hero.skillset.join(" - ")}</p><img src = "${Hero.pic}"> </img> </div>`
     return
 }
 
 function displayResults(Ability) {
-    let count = 0;
+    resultsarea.innerHTML = ""
     eternals.forEach((Hero) => 
     {   
-     console.log(Hero.name)
      Hero.skillset.forEach((skill) => 
         {
             if(skill == Ability){
                 createCard(Hero)
             }
         });
-        count++;
     });
-
+    return
 }
 
 function resetInputArea() {
     let inputarea = document.querySelector(".inparea")
-    if(inputarea.value != "search abilities here.") {
+    if(inputarea.value != "search abilities here." && inputarea.value == "") {
         inputarea.value = "search abilities here."
     }
+    return
 }
